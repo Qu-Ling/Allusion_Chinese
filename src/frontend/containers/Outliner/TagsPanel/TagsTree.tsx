@@ -563,7 +563,7 @@ const TagsTree = observer((props: Partial<MultiSplitPaneProps>) => {
   return (
     <MultiSplitPane
       id="tags"
-      title="Tags"
+      title="标签"
       onKeyDown={handleKeyDown}
       headerProps={{
         onDragOver: handleDragOverAndLeave,
@@ -584,7 +584,7 @@ const TagsTree = observer((props: Partial<MultiSplitPaneProps>) => {
               icon={IconSet.PLUS}
               text="New Tag"
               onClick={handleRootAddTag}
-              tooltip="Add a new tag"
+              tooltip="填加一个新标签"
             />
           )}
         </Toolbar>
@@ -595,7 +595,7 @@ const TagsTree = observer((props: Partial<MultiSplitPaneProps>) => {
         <div className="tree-content-label" style={{ padding: '0.25rem' }}>
           {/* <span className="pre-icon">{IconSet.INFO}</span> */}
           {/* No tags or collections created yet */}
-          <i style={{ marginLeft: '1em' }}>None</i>
+          <i style={{ marginLeft: '1em' }}>空</i>
         </div>
       ) : (
         <Tree

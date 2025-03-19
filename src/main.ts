@@ -83,7 +83,7 @@ function initialize() {
 }
 
 function createWindow() {
-  // Remember window size and position
+  // Remember window size and position 记住窗口大小和位置
   const previousWindowState = getPreviousWindowState();
 
   const mainOptions: BrowserWindowConstructorOptions = {
@@ -106,17 +106,18 @@ function createWindow() {
     ...previousWindowState,
   };
 
-  // Create the browser window.
+  // Create the browser window 创建浏览器窗口。
   mainWindow = new BrowserWindow(mainOptions);
   mainWindow.on('ready-to-show', () => mainWindow?.show());
 
-  // Customize new window opening
+  // Customize new window opening 自定义新窗口打开
   // https://www.electronjs.org/docs/api/window-open
   mainWindow.webContents.setWindowOpenHandler(({ frameName }) => {
     if (mainWindow === null || mainWindow.isDestroyed()) {
       return { action: 'deny' };
     }
 
+    // 窗口名称
     const WINDOW_TITLES: { [key: string]: string } = {
       settings: 'Settings',
       'help-center': 'Help Center',
@@ -127,7 +128,7 @@ function createWindow() {
       return { action: 'deny' };
     }
 
-    // Open window on same display as main window
+    // Open window on same display as main window 在与主窗口相同的显示上打开窗口
     const targetDisplay = getMainWindowDisplay();
     const bounds: Rectangle = { width: 680, height: 480, x: 0, y: 0 };
     bounds.x = targetDisplay.bounds.x + bounds.width / 2;
@@ -405,7 +406,7 @@ function createTrayMenu() {
   }
 }
 
-// Quit when all windows are closed.
+// Quit when all windows are closed. 当所有窗口都关闭时退出。
 app.on('window-all-closed', () => {
   if (clipServer === null || !clipServer.isRunInBackgroundEnabled()) {
     // On OS X it is common for applications and their menu bar

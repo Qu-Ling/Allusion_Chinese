@@ -74,7 +74,7 @@ export class LocationTreeItemRevealer extends TreeItemRevealer {
 
 // Tooltip info
 const enum Tooltip {
-  Location = 'Add new Location',
+  Location = '添加新目录',
   Refresh = 'Refresh directories',
 }
 
@@ -573,7 +573,8 @@ const LocationsPanel = observer((props: Partial<MultiSplitPaneProps>) => {
   return (
     <MultiSplitPane
       id="locations"
-      title="Locations"
+      // title="Locations"
+      title="文件夹"
       className={`${isEmpty ? 'attention' : ''} ${isDropping ? 'info' : ''}`}
       headerToolbar={
         <Toolbar controls="location-list" isCompact>
@@ -600,7 +601,7 @@ const LocationsPanel = observer((props: Partial<MultiSplitPaneProps>) => {
       {...props}
     >
       <LocationsTree onDelete={setDeletableLocation} onExclude={setExcludableSubLocation} />
-      {isEmpty && <Callout icon={IconSet.INFO}>Click + to choose a location.</Callout>}
+      {isEmpty && <Callout icon={IconSet.INFO}>点击右上 + 选择一个文件夹。</Callout>}
 
       <LocationRecoveryDialog />
 

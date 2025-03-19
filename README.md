@@ -2,31 +2,31 @@
 
 <img alt="Allusion" src="./resources/images/helpcenter/logo-about-helpcenter-dark.jpg" width="250" />
 
-Allusion is a tool built for artists, aimed to help you organize your **Visual Library** – A single place that contains your entire collection of references, inspiration and any other kinds of images.
+Allusion是一个为艺术家建立的工具，旨在帮助您组织您的**视觉图书馆**-一个包含您的整个参考，灵感和任何其他类型的图像集合的地方。
 
-[Read more about Allusion →](https://allusion-app.github.io/)
+[阅读更多 关于 Allusion →](https://allusion-app.github.io/)
 
-## Installation
+## 安装
 
-Find the latest version of Allusion on the [Releases](https://github.com/allusion-app/Allusion/releases) page.
-The application can be automatically updated when a new version becomes available.
+在[发行页](https://github.com/allusion-app/Allusion/releases) 上找到最新版本的 Allusion。
+当新版本可用时，应用程序可以自动更新。
 
-## Development
+## 开发
 
-### Quick Start
+### 快速入门
 
-You need to have [NodeJS](https://nodejs.org/en/download/) and a package manager such as [Yarn](https://yarnpkg.com/lang/en/docs/install/) installed.
-Then run the following commands to get started:
 
-1. Run `yarn install` to install or update all necessary dependencies.
-2. Run `yarn dev` to build the project files to the `/build` directory. This will keep running to immediately build changed files when they are updated.
-3. In a second terminal, run `yarn start` to start the application. Refresh the window (Ctrl/Cmd + R) after modifying a file to load the updated build files.
+您需要安装 [NodeJS](https://nodejs.org/en/download/) 和包管理器（如 [Yarn](https://yarnpkg.com/lang/en/docs/install/)）。然后运行以下命令以开始使用：
 
-### Release Build
+1. 运行 'yarn install' 来安装或更新所有必要的依赖项。
+2. 运行 'yarn dev' 将项目文件构建到 /build 目录下。这将保持运行，以便在更新时立即构建更改的文件。
+3. 在第二个终端中，运行 'yarn start' 以启动应用程序。修改文件后刷新窗口 （Ctrl/Cmd + R） 以加载更新的构建文件。
 
-An installable executable can be built using `yarn package` for your platform in the `/dist` folder. The building is performed using the [electron-builder](https://www.electron.build/) package, and is configured by a section in the `package.json` file.
-Builds are automatically published to Github Releases when a tag is created in GitHub.
+### 发布版本
 
-## Further Information
+可以使用“/dist”文件夹中的“yarn package”为您的平台构建可安装的可执行文件。构建是使用 [electron-builder](https://www.electron.build/) 包完成的，并由 'package.json' 文件中的一个部分配置。
+在 GitHub 中创建标记时，内部版本会自动发布到 Github 版本。
 
-Anything related from documentation to frequently asked questions can be found in our [wiki](https://github.com/allusion-app/Allusion/wiki).
+## 更多信息
+
+从文档到常见问题以及详细开发步骤等，任何相关内容都可以在我们的 [wiki](https://github.com/allusion-app/Allusion/wiki) 中找到。

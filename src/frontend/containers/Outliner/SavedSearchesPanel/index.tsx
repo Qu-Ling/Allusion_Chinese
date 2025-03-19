@@ -22,7 +22,7 @@ import { triggerContextMenuEvent } from '../utils';
 
 // Tooltip info
 const enum Tooltip {
-  Create = 'Save the current search as a new saved search',
+  Create = '将当前搜索条件另存为新的已保存搜索条件',
 }
 
 interface ITreeData {
@@ -386,7 +386,7 @@ const SavedSearchesPanel = observer((props: Partial<MultiSplitPaneProps>) => {
     <SearchDnDProvider value={data.current}>
       <MultiSplitPane
         id="saved-searches"
-        title="Saved Searches"
+        title="搜索条件"
         headerToolbar={
           <Toolbar controls="saved-searches-list" isCompact>
             <ToolbarButton
@@ -405,9 +405,7 @@ const SavedSearchesPanel = observer((props: Partial<MultiSplitPaneProps>) => {
           onDuplicate={searchStore.duplicate}
           onReplace={searchStore.replaceWithActiveSearch}
         />
-        {isEmpty && (
-          <Callout icon={IconSet.INFO}>Click + to save your current search criteria.</Callout>
-        )}
+        {isEmpty && <Callout icon={IconSet.INFO}> 点击+保存当前搜索条件.</Callout>}
 
         {editableSearch && (
           <SearchItemDialog
