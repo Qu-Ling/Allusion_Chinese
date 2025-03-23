@@ -61,8 +61,8 @@ export const SlideModeCommand = observer(() => {
         isCollapsible={false}
         icon={IconSet.ARROW_LEFT}
         onClick={uiStore.disableSlideMode}
-        text="Back"
-        tooltip="Back to content panel"
+        text="返回"
+        tooltip="返回画廊"
       />
 
       <div className="spacer" />
@@ -73,8 +73,8 @@ export const SlideModeCommand = observer(() => {
         icon={IconSet.INFO}
         onClick={uiStore.toggleInspector}
         checked={uiStore.isInspectorOpen}
-        text="Toggle the inspector panel"
-        tooltip="Toggle the inspector panel"
+        text="切换检查器面板"
+        tooltip="查看图片详情"
       />
     </>
   );
@@ -98,7 +98,7 @@ const FileSelectionCommand = observer(() => {
       onClick={handleToggleSelect}
       pressed={allFilesSelected}
       text={selectionCount}
-      tooltip="Selects or deselects all images"
+      tooltip="选择或取消选择所有图像"
       disabled={fileCount === 0}
     />
   );
@@ -112,8 +112,8 @@ const RemoveFilesPopover = observer(() => {
         icon={IconSet.DELETE}
         disabled={uiStore.fileSelection.size === 0}
         onClick={uiStore.openToolbarFileRemover}
-        text="Delete"
-        tooltip="Delete selected missing images from library"
+        text="删除"
+        tooltip="从库中删除选定的缺失图像"
       />
       <FileRemoval />
     </>

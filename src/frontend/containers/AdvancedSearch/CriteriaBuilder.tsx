@@ -24,35 +24,34 @@ const CriteriaBuilder = memo(function QueryBuilder({ keySelector, dispatch }: Qu
   return (
     <fieldset aria-labelledby="criteria-builder-label">
       <legend id="criteria-builder-label">
-        Criteria Builder
+        条件生成器
         <InfoButton>
-          A criteria is made of three components:
+          一个条件由三个部分组成
           <ul>
             <li>
-              <b>key</b> (a property of the image file),
+              <b>键</b> (图像文件的属性，如名称、路径等等),
             </li>
             <li>
-              <b>operator</b> (decides how the property value is compared) and
+              <b>逻辑要求</b> (决定如何比较属性值)
             </li>
             <li>
-              the matching <b>value</b>.
+              要求匹配的<b>值</b>.
             </li>
           </ul>
-          Every image that matches the criteria is shown.
+          将显示符合条件的每张图像。
           <br />
           <br />
-          You can edit the inputs for each component and add the criteria to the query by pressing
-          the{' '}
+          您可以编辑每个组件的输入项，并通过按下输入框旁的{' '}
           <span aria-label="add criteria" style={{ verticalAlign: 'middle' }}>
             {IconSet.ADD}
           </span>{' '}
-          icon button next to the inputs.
+          图标按钮，将条件添加到查询中。
         </InfoButton>
       </legend>
       <div id="criteria-builder">
-        <label id="builder-key">Key</label>
-        <label id="builder-operator">Operator</label>
-        <label id="builder-value">Value</label>
+        <label id="builder-key">键</label>
+        <label id="builder-operator">逻辑要求</label>
+        <label id="builder-value">值</label>
         <span></span>
 
         <KeySelector

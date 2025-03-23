@@ -40,10 +40,10 @@ const ColorPickerMenu = observer(({ tag }: { tag: ClientTag }) => {
       {/* Rainbow gradient icon? */}
       <MenuCheckboxItem
         checked={color === 'inherit'}
-        text="Inherit Parent Color"
+        text="继承父颜色"
         onClick={() => handleChange(color === 'inherit' ? '' : 'inherit')}
       />
-      <MenuSubItem text="Pick Color" icon={IconSet.COLOR}>
+      <MenuSubItem text="选择颜色" icon={IconSet.COLOR}>
         <HexColorPicker color={color || undefined} onChange={handleChange} />
         <button
           key="none"
@@ -96,28 +96,28 @@ export const TagItemContextMenu = observer((props: IContextMenuProps) => {
             .then((t) => dispatch(Factory.insertNode(tag.id, t.id)))
             .catch((err) => console.log('Could not create tag', err))
         }
-        text="New Tag"
+        text="新标签"
         icon={IconSet.TAG_ADD}
       />
       <MenuItem
         onClick={() => dispatch(Factory.enableEditing(tag.id))}
-        text="Rename"
+        text="重命名"
         icon={IconSet.EDIT}
       />
       <MenuItem
         icon={!tag.isHidden ? IconSet.HIDDEN : IconSet.PREVIEW}
-        text="Hide Tagged Images"
+        text="隐藏标记的图像"
         onClick={tag.toggleHidden}
       />
       <MenuItem
         onClick={() => dispatch(Factory.confirmMerge(tag))}
-        text="Merge with"
+        text="合并"
         icon={IconSet.TAG_GROUP}
         disabled={ctxTags.some((tag) => tag.subTags.length > 0)}
       />
       <MenuItem
         onClick={() => dispatch(Factory.confirmDeletion(tag))}
-        text="Delete"
+        text="删除"
         icon={IconSet.DELETE}
       />
       <MenuDivider />
@@ -129,7 +129,7 @@ export const TagItemContextMenu = observer((props: IContextMenuProps) => {
             ? uiStore.addTagSelectionToCriteria()
             : uiStore.addSearchCriteria(new ClientTagSearchCriteria('tags', tag.id))
         }
-        text="Add to Search"
+        text="添加一个查询"
         icon={IconSet.SEARCH}
       />
       <MenuItem
@@ -138,19 +138,19 @@ export const TagItemContextMenu = observer((props: IContextMenuProps) => {
             ? uiStore.replaceCriteriaWithTagSelection()
             : uiStore.replaceSearchCriteria(new ClientTagSearchCriteria('tags', tag.id))
         }
-        text="Replace Search"
+        text="替换搜索"
         icon={IconSet.REPLACE}
       />
       <MenuDivider />
       <MenuItem
         onClick={() => tag.parent.insertSubTag(tag, pos - 2)}
-        text="Move Up"
+        text="上升"
         icon={IconSet.ITEM_MOVE_UP}
         disabled={pos === 1}
       />
       <MenuItem
         onClick={() => tag.parent.insertSubTag(tag, pos + 1)}
-        text="Move Down"
+        text="下降"
         icon={IconSet.ITEM_MOVE_DOWN}
         disabled={pos === tag.parent.subTags.length}
       />

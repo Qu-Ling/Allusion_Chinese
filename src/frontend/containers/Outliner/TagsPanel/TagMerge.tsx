@@ -31,24 +31,22 @@ export const TagMerge = observer(({ tag, onClose }: TagMergeProps) => {
     }
   };
 
-  const plur = ctxTags.length === 1 ? '' : 's';
+  // const plur = ctxTags.length === 1 ? '' : 's';
 
   return (
     <Dialog
       open
-      title={`Merge Tag${plur} With`}
+      title="合并标签"
       icon={IconSet.TAG_GROUP}
       onCancel={onClose}
       describedby="merge-info"
     >
-      <p id="merge-info">
-        This will replace all uses of the chosen tag{plur} with the tag you select below.
-      </p>
+      <p id="merge-info">这会将所选标签的所有标注合并到您在下面选择的标签。</p>
       <form method="dialog" onSubmit={(e) => e.preventDefault()}>
         <fieldset>
-          <legend>Merge tag{plur} with</legend>
+          <legend>合并标签</legend>
           <div id="tag-merge-overview">
-            <span>Tag{plur} to merge</span>
+            <span>将标签：</span>
             <br />
             {ctxTags.map((tag) => (
               <Tag key={tag.id} text={tag.name} color={tag.viewColor} />
@@ -57,7 +55,7 @@ export const TagMerge = observer(({ tag, onClose }: TagMergeProps) => {
 
           <br />
 
-          <label htmlFor="tag-merge-picker">Merge with</label>
+          <label htmlFor="tag-merge-picker">合并到：</label>
           <GridCombobox
             textboxId="tag-merge-picker"
             autoFocus
@@ -71,9 +69,7 @@ export const TagMerge = observer(({ tag, onClose }: TagMergeProps) => {
             renderOption={renderTagOption}
             colcount={2}
           />
-          {mergingWithSelf && (
-            <span className="form-error">You cannot merge a tag with itself.</span>
-          )}
+          {mergingWithSelf && <span className="form-error">您不能将标签与自身合并。</span>}
         </fieldset>
 
         <fieldset className="dialog-actions">

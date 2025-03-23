@@ -574,7 +574,7 @@ const LocationsPanel = observer((props: Partial<MultiSplitPaneProps>) => {
     <MultiSplitPane
       id="locations"
       // title="Locations"
-      title="文件夹"
+      title="位置"
       className={`${isEmpty ? 'attention' : ''} ${isDropping ? 'info' : ''}`}
       headerToolbar={
         <Toolbar controls="location-list" isCompact>

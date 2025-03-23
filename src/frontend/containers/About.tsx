@@ -18,28 +18,27 @@ const About = observer(() => {
       <div id="about" className="light">
         <img src={Logo_About} alt="Logo" />
         <small>
-          Version <strong>{RendererMessenger.getVersion()}</strong>
+          版本 <strong>{RendererMessenger.getVersion()}</strong>
         </small>
         <p>
-          This application was made by a small team of individuals who gathered due to common
-          interest in art, design and software.
+          此应用程序是由一小群人制作的，他们因对艺术、设计和软件的共同兴趣而聚集在一起。
           <br />
-          It&apos;s completely <b>free and open source</b>! Find out more at
+          它是完全<b>免费和开源</b>的！了解更多信息，请访问
         </p>
         <span>
           <ExternalLink url="https://allusion-app.github.io/">allusion-app.github.io</ExternalLink>.
         </span>
         <ul>
-          <li>General information</li>
-          <li>Download the latest version</li>
+          <li>一般信息</li>
+          <li>下载最新版本</li>
         </ul>
         <ExternalLink url="https://github.com/allusion-app/Allusion">
           github.com/allusion-app/Allusion
         </ExternalLink>
         <ul>
-          <li>🤓 View the source code</li>
-          <li>🐛 Provide feedback and report bugs</li>
-          <li>👥 Learn about contributing</li>
+          <li>🤓 查看源代码</li>
+          <li>🐛 提供反馈并报告 bug</li>
+          <li>👥 了解如何贡献</li>
         </ul>
         {/* TODO: Licensing info here? */}
       </div>

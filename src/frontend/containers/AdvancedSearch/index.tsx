@@ -40,7 +40,7 @@ export const AdvancedSearchDialog = observer(() => {
   return (
     <Dialog
       open={uiStore.isAdvancedSearchOpen}
-      title="Advanced Search"
+      title="高级查询"
       icon={IconSet.SEARCH_EXTENDED}
       onCancel={uiStore.closeAdvancedSearch}
     >
@@ -52,10 +52,10 @@ export const AdvancedSearchDialog = observer(() => {
         <QueryMatch searchMatchAny={uiStore.searchMatchAny} toggle={uiStore.toggleSearchMatchAny} />
 
         <fieldset className="dialog-actions">
-          <Button styling="outlined" text="Reset" icon={IconSet.CLOSE} onClick={reset} />
+          <Button styling="outlined" text="重置" icon={IconSet.CLOSE} onClick={reset} />
           <Button
             styling="filled"
-            text="Search"
+            text="查询"
             icon={IconSet.SEARCH}
             onClick={search}
             disabled={query.size === 0}

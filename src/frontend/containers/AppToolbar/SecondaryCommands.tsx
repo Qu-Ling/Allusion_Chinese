@@ -12,33 +12,29 @@ const SecondaryCommands = observer(() => {
     <MenuButton
       icon={IconSet.MORE}
       text="More"
-      tooltip="See more"
+      tooltip="更多"
       id="__secondary-menu"
       menuID="__secondary-menu-options"
     >
       <MenuItem
         icon={IconSet.SEARCH_EXTENDED}
         onClick={uiStore.toggleAdvancedSearch}
-        text="Advanced Search"
+        text="高级搜索"
         accelerator={<KeyCombo combo={uiStore.hotkeyMap.advancedSearch} />}
       />
       <MenuItem
         icon={IconSet.HELPCENTER}
         onClick={uiStore.toggleHelpCenter}
-        text="Help Center"
+        text="帮助中心"
         accelerator={<KeyCombo combo={uiStore.hotkeyMap.toggleHelpCenter} />}
       />
       <MenuItem
         icon={IconSet.SETTINGS}
         onClick={uiStore.toggleSettings}
-        text="Settings"
+        text="设置"
         accelerator={<KeyCombo combo={uiStore.hotkeyMap.toggleSettings} />}
       />
-      <MenuItem
-        icon={IconSet.RELOAD}
-        onClick={RendererMessenger.checkForUpdates}
-        text="Check for updates"
-      />
+      <MenuItem icon={IconSet.RELOAD} onClick={RendererMessenger.checkForUpdates} text="检查更新" />
       <MenuItem icon={IconSet.LOGO} onClick={uiStore.toggleAbout} text="About" />
     </MenuButton>
   );

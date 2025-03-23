@@ -110,8 +110,8 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
       return (
         <div className="error-boundary">
           <span className="custom-icon-64">{IconSet.DB_ERROR}</span>
-          <h2>Something went wrong</h2>
-          <p>You can try one of the following options or contact the maintainers.</p>
+          <h2>出现bug的话</h2>
+          <p>您可以尝试以下选项之一或联系维护者。</p>
           <ButtonGroup align="center">
             <Button
               onClick={this.reloadApplication}

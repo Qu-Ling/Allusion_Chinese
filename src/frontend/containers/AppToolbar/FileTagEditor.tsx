@@ -33,7 +33,7 @@ const FileTagEditor = observer(() => {
         disabled={uiStore.fileSelection.size === 0 && !uiStore.isToolbarTagPopoverOpen}
         onClick={uiStore.toggleToolbarTagPopover}
         text="Tag selected files"
-        tooltip="Add or remove tags from selected images"
+        tooltip="在所选图像中添加或删除标签"
       />
       <FloatingPanel>
         <TagEditor />

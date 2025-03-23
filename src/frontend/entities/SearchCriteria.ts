@@ -42,14 +42,14 @@ export const NumberOperatorSymbols: Record<NumberOperatorType, string> = {
 };
 
 export const StringOperatorLabels: Record<StringOperatorType, string> = {
-  equals: 'Equals',
-  equalsIgnoreCase: 'Equals (case insensitive)',
-  notEqual: 'Not Equal',
-  startsWith: 'Starts With',
-  startsWithIgnoreCase: 'Starts With (case insensitive)',
-  notStartsWith: 'Not Starts With',
-  contains: 'Contains',
-  notContains: 'Not Contains',
+  equals: '相同',
+  equalsIgnoreCase: '相同（不区分大小写）',
+  notEqual: '不同',
+  startsWith: '开头为',
+  startsWithIgnoreCase: '开头为（不区分大小写）',
+  notStartsWith: '开头不为',
+  contains: '包含',
+  notContains: '不包含',
 };
 
 export abstract class ClientFileSearchCriteria implements IBaseSearchCriteria {
