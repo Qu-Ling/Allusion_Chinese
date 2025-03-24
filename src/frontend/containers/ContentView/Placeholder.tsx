@@ -104,9 +104,9 @@ const Welcome = () => {
 const NoContentFound = () => {
   const { uiStore } = useStore();
   return (
-    <ContentPlaceholder title="No images" icon={IconSet.MEDIA}>
-      <p>Images can be added from the outliner</p>
-      <Button onClick={uiStore.toggleOutliner} text="Toggle outliner" styling="outlined" />
+    <ContentPlaceholder title="没有图片" icon={IconSet.MEDIA}>
+      <p>可以从 导航栏-位置 中添加图像</p>
+      <Button onClick={uiStore.toggleOutliner} text="展开导航栏" styling="outlined" />
     </ContentPlaceholder>
   );
 };
@@ -114,18 +114,18 @@ const NoContentFound = () => {
 const NoQueryContent = () => {
   const { fileStore } = useStore();
   return (
-    <ContentPlaceholder title="No images found" icon={IconSet.SEARCH}>
-      <p>Try searching for something else.</p>
+    <ContentPlaceholder title="未找到图片" icon={IconSet.SEARCH}>
+      <p>尝试搜索其他内容</p>
       {/* TODO: when search includes a Hidden tag, remind the user that's what might be causing them to see no results */}
       <ButtonGroup align="center">
         <Button
-          text="All images"
+          text="所有图片"
           icon={IconSet.MEDIA}
           onClick={fileStore.fetchAllFiles}
           styling="outlined"
         />
         <Button
-          text="Untagged"
+          text="未标记图片"
           icon={IconSet.TAG_BLANCO}
           onClick={fileStore.fetchUntaggedFiles}
           styling="outlined"
@@ -138,10 +138,10 @@ const NoQueryContent = () => {
 const NoUntaggedContent = () => {
   const { fileStore } = useStore();
   return (
-    <ContentPlaceholder title="No untagged images" icon={IconSet.TAG}>
+    <ContentPlaceholder title="没有未标记的图片" icon={IconSet.TAG}>
       <p>All images have been tagged. Nice work!</p>
       <Button
-        text="All Images"
+        text="全部图片"
         icon={IconSet.MEDIA}
         onClick={fileStore.fetchAllFiles}
         styling="outlined"

@@ -50,14 +50,14 @@ const Main = () => {
     };
 
     const { hotkeyMap } = uiStore;
-    if (matches(hotkeyMap.selectAll)) {
+    if (matches(hotkeyMap.全选)) {
       uiStore.selectAllFiles();
-    } else if (matches(hotkeyMap.deselectAll)) {
+    } else if (matches(hotkeyMap.取消全选)) {
       uiStore.clearFileSelection();
-    } else if (matches(hotkeyMap.openTagEditor)) {
+    } else if (matches(hotkeyMap.打开标签编辑器)) {
       e.preventDefault();
       uiStore.openToolbarTagPopover();
-    } else if (matches(hotkeyMap.deleteSelection)) {
+    } else if (matches(hotkeyMap.删除选中内容)) {
       uiStore.openMoveFilesToTrash();
     }
   });

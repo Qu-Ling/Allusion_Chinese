@@ -104,14 +104,14 @@ export const LayoutMenuItems = observer(() => {
         onClick={uiStore.setMethodList}
         checked={uiStore.isList}
         text="列表"
-        accelerator={<KeyCombo combo={uiStore.hotkeyMap.viewList} />}
+        accelerator={<KeyCombo combo={uiStore.hotkeyMap.列表视图} />}
       />
       <MenuRadioItem
         icon={IconSet.VIEW_GRID}
         onClick={uiStore.setMethodGrid}
         checked={uiStore.isGrid}
         text="网格"
-        accelerator={<KeyCombo combo={uiStore.hotkeyMap.viewGrid} />}
+        accelerator={<KeyCombo combo={uiStore.hotkeyMap.网格视图} />}
       />
       <MenuRadioItem
         icon={IconSet.VIEW_MASONRY_V}
@@ -119,14 +119,14 @@ export const LayoutMenuItems = observer(() => {
         checked={uiStore.isMasonryVertical}
         // TODO: "masonry" might not ring a bell to some people. Suggestions for a better name? "Flow", "Stream"?
         text="宽度一致"
-        accelerator={<KeyCombo combo={uiStore.hotkeyMap.viewMasonryVertical} />}
+        accelerator={<KeyCombo combo={uiStore.hotkeyMap.宽度一致布局} />}
       />
       <MenuRadioItem
         icon={IconSet.VIEW_MASONRY_H}
         onClick={uiStore.setMethodMasonryHorizontal}
         checked={uiStore.isMasonryHorizontal}
         text="高度一致"
-        accelerator={<KeyCombo combo={uiStore.hotkeyMap.viewMasonryHorizontal} />}
+        accelerator={<KeyCombo combo={uiStore.hotkeyMap.高度一致布局} />}
       />
     </MenuRadioGroup>
   );

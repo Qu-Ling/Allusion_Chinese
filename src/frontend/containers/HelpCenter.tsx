@@ -22,7 +22,7 @@ const HelpCenter = observer(() => {
       onClose={uiStore.closeHelpCenter}
       windowName="help-center"
       closeOnEscape
-      additionalCloseKey={uiStore.hotkeyMap.toggleHelpCenter}
+      additionalCloseKey={uiStore.hotkeyMap.打开帮助中心}
     >
       <Documentation
         id="help-center"

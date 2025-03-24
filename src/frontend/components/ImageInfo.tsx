@@ -158,22 +158,22 @@ const ImageInfo = ({ file }: ImageInfoProps) => {
   return (
     <form onSubmit={handleEditSubmit} onReset={() => setIsEditing(false)}>
       <header>
-        <h2>Information</h2>
+        <h2>详细信息</h2>
         <Toolbar controls="file-info" isCompact>
           {isEditing ? (
             <>
               <ToolbarButton
                 key="cancel"
                 icon={IconSet.CLOSE}
-                text="Cancel"
-                tooltip="Cancel changes"
+                text="取消"
+                tooltip="取消更改"
                 type="reset"
               />
               <ToolbarButton
                 key="submit"
                 icon={IconSet.SELECT_CHECKED}
-                text="Save"
-                tooltip="Save changes"
+                text="保存"
+                tooltip="保存更改"
                 type="submit"
               />
             </>
@@ -183,7 +183,7 @@ const ImageInfo = ({ file }: ImageInfoProps) => {
               icon={IconSet.EDIT}
               text="Edit"
               onClick={() => setIsEditing(true)}
-              tooltip="Edit Exif data"
+              tooltip="编辑图片属性"
               type="button"
             />
           )}

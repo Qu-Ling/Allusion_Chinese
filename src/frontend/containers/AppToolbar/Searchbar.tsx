@@ -16,7 +16,7 @@ const Searchbar = observer(() => {
     searchCriteriaList.every(
       (crit) =>
         crit.key === 'tags' &&
-        crit.operator === 'containsRecursively' &&
+        crit.operator === '包含递归' &&
         (crit as ClientTagSearchCriteria).value,
     );
 
@@ -54,7 +54,7 @@ const QuickSearchList = observer(() => {
   });
 
   const handleSelect = useAction((item: Readonly<ClientTag>) =>
-    uiStore.addSearchCriteria(new ClientTagSearchCriteria('tags', item.id, 'containsRecursively')),
+    uiStore.addSearchCriteria(new ClientTagSearchCriteria('tags', item.id, '包含递归')),
   );
 
   const handleDeselect = useAction((item: Readonly<ClientTag>) => {

@@ -25,53 +25,67 @@ export type UpscaleMode = 'smooth' | 'pixelated';
 export const PREFERENCES_STORAGE_KEY = 'preferences';
 
 export interface IHotkeyMap {
-  // Outliner actions
-  toggleOutliner: string;
-  replaceQuery: string;
+  // 大纲操作
+  操作栏收展: string;
 
-  // Inspector actions
-  toggleInspector: string;
-  toggleSettings: string;
-  toggleHelpCenter: string;
+  // 检查器操作
+  切换检查器: string;
+  替换查询: string;
+  打开设置: string;
+  打开帮助中心: string;
+  // 内容编辑
+  删除选中内容: string;
+  打开标签编辑器: string;
+  全选: string;
+  取消全选: string;
 
-  // Toolbar actions (these should only be active when the content area is focused)
-  deleteSelection: string;
-  openTagEditor: string;
-  selectAll: string;
-  deselectAll: string;
-  viewList: string;
-  viewGrid: string;
-  viewMasonryVertical: string;
-  viewMasonryHorizontal: string;
-  viewSlide: string;
-  search: string;
-  advancedSearch: string;
+  // 视图模式
+  大图展示: string; // TODO: backspace and escape are hardcoded hotkeys to exist slide mode
+  列表视图: string;
+  网格视图: string;
+  宽度一致布局: string;
+  高度一致布局: string;
 
-  // Other
-  openPreviewWindow: string;
-  openExternal: string;
+  // 搜索功能
+  搜索: string;
+  高级搜索: string;
+
+  // 窗口控制
+  打开预览窗口: string;
+  在外部打开: string;
 }
 
 // https://blueprintjs.com/docs/#core/components/hotkeys.dialog
 export const defaultHotkeyMap: IHotkeyMap = {
-  toggleOutliner: '1',
-  toggleInspector: '2',
-  replaceQuery: 'r',
-  toggleSettings: 's',
-  toggleHelpCenter: 'h',
-  deleteSelection: 'del',
-  openTagEditor: 't',
-  selectAll: 'mod + a',
-  deselectAll: 'mod + d',
-  viewSlide: 'enter', // TODO: backspace and escape are hardcoded hotkeys to exist slide mode
-  viewList: 'alt + 1',
-  viewGrid: 'alt + 2',
-  viewMasonryVertical: 'alt + 3',
-  viewMasonryHorizontal: 'alt + 4',
-  search: 'mod + f',
-  advancedSearch: 'mod + shift + f',
-  openPreviewWindow: 'space',
-  openExternal: 'mod + enter',
+  // 大纲操作
+  操作栏收展: '1',
+
+  // 检查器操作
+  切换检查器: '2',
+  替换查询: 'r',
+  打开设置: 's',
+  打开帮助中心: 'h',
+
+  // 内容编辑
+  删除选中内容: 'del',
+  打开标签编辑器: 't',
+  全选: 'mod + a',
+  取消全选: 'mod + d',
+
+  // 视图模式
+  大图展示: 'enter', // TODO: backspace and escape are hardcoded hotkeys to exist slide mode
+  列表视图: 'alt + 1',
+  网格视图: 'alt + 2',
+  宽度一致布局: 'alt + 3',
+  高度一致布局: 'alt + 4',
+
+  // 搜索功能
+  搜索: 'mod + f',
+  高级搜索: 'mod + shift + f',
+
+  // 窗口控制
+  打开预览窗口: 'space',
+  在外部打开: 'mod + enter',
 };
 
 /**
@@ -713,36 +727,36 @@ class UiStore {
     const { hotkeyMap } = this;
     let isMatch = true;
     // UI
-    if (matches(hotkeyMap.toggleOutliner)) {
+    if (matches(hotkeyMap.操作栏收展)) {
       this.toggleOutliner();
-    } else if (matches(hotkeyMap.toggleInspector)) {
+    } else if (matches(hotkeyMap.切换检查器)) {
       this.toggleInspector();
-    } else if (matches(hotkeyMap.openTagEditor)) {
+    } else if (matches(hotkeyMap.打开标签编辑器)) {
       // Windows
-    } else if (matches(hotkeyMap.toggleSettings)) {
+    } else if (matches(hotkeyMap.打开设置)) {
       this.toggleSettings();
-    } else if (matches(hotkeyMap.toggleHelpCenter)) {
+    } else if (matches(hotkeyMap.打开帮助中心)) {
       this.toggleHelpCenter();
-    } else if (matches(hotkeyMap.openPreviewWindow)) {
+    } else if (matches(hotkeyMap.打开预览窗口)) {
       this.openPreviewWindow();
       e.preventDefault(); // prevent scrolling with space when opening the preview window
-    } else if (matches(hotkeyMap.openExternal)) {
+    } else if (matches(hotkeyMap.在外部打开)) {
       this.openExternal();
       // Search
-    } else if (matches(hotkeyMap.search)) {
+    } else if (matches(hotkeyMap.搜索)) {
       (document.querySelector('.searchbar input') as HTMLElement).focus();
-    } else if (matches(hotkeyMap.advancedSearch)) {
+    } else if (matches(hotkeyMap.高级搜索)) {
       this.toggleAdvancedSearch();
       // View
-    } else if (matches(hotkeyMap.viewList)) {
+    } else if (matches(hotkeyMap.列表视图)) {
       this.setMethodList();
-    } else if (matches(hotkeyMap.viewGrid)) {
+    } else if (matches(hotkeyMap.网格视图)) {
       this.setMethodGrid();
-    } else if (matches(hotkeyMap.viewMasonryVertical)) {
+    } else if (matches(hotkeyMap.宽度一致布局)) {
       this.setMethodMasonryVertical();
-    } else if (matches(hotkeyMap.viewMasonryHorizontal)) {
+    } else if (matches(hotkeyMap.高度一致布局)) {
       this.setMethodMasonryHorizontal();
-    } else if (matches(hotkeyMap.viewSlide)) {
+    } else if (matches(hotkeyMap.大图展示)) {
       this.toggleSlideMode();
     } else {
       isMatch = false;

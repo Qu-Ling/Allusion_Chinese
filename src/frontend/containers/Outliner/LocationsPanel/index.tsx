@@ -160,24 +160,20 @@ const DirectoryMenu = observer(
 
     return (
       <>
-        <MenuItem onClick={handleAddToSearch} text="Add to Search Query" icon={IconSet.SEARCH} />
-        <MenuItem
-          onClick={handleReplaceSearch}
-          text="Replace Search Query"
-          icon={IconSet.REPLACE}
-        />
+        <MenuItem onClick={handleAddToSearch} text="添加到搜索栏" icon={IconSet.SEARCH} />
+        <MenuItem onClick={handleReplaceSearch} text="替换搜索" icon={IconSet.REPLACE} />
         <MenuDivider />
         {location instanceof ClientSubLocation && (
           <MenuItem
             // Only show alert when excluding, not when re-including
             onClick={location.isExcluded ? location.toggleExcluded : () => onExclude(location)}
-            text={location.isExcluded ? 'Re-include' : 'Exclude'}
+            text={location.isExcluded ? '恢复可见' : '屏蔽'}
             icon={!location.isExcluded ? IconSet.HIDDEN : IconSet.PREVIEW}
           />
         )}
         <MenuItem
           onClick={handleOpenFileExplorer}
-          text="Open in File Browser"
+          text="在资源管理器中打开"
           icon={IconSet.FOLDER_CLOSE}
         />
       </>
@@ -200,11 +196,11 @@ const LocationTreeContextMenu = observer(({ location, onDelete, onExclude }: ICo
     return (
       <Menu>
         <MenuItem
-          text="Open Recovery Panel"
+          text="打开恢复面板"
           onClick={() => uiStore.openLocationRecovery(location.id)}
           icon={IconSet.WARNING_BROKEN_LINK}
         />
-        <MenuItem text="Delete" onClick={openDeleteDialog} icon={IconSet.DELETE} />
+        <MenuItem text="删除" onClick={openDeleteDialog} icon={IconSet.DELETE} />
       </Menu>
     );
   }
@@ -213,7 +209,7 @@ const LocationTreeContextMenu = observer(({ location, onDelete, onExclude }: ICo
     <Menu>
       <DirectoryMenu location={location} onExclude={onExclude} />
       <MenuDivider />
-      <MenuItem text="Delete" onClick={openDeleteDialog} icon={IconSet.DELETE} />
+      <MenuItem text="删除" onClick={openDeleteDialog} icon={IconSet.DELETE} />
     </Menu>
   );
 });

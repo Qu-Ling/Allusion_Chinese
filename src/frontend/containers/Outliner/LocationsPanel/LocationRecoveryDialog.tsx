@@ -156,7 +156,7 @@ const RecoveryActions = observer(
               key="cancel"
               styling="outlined"
               onClick={uiStore.closeLocationRecovery}
-              text="Cancel"
+              text="取消"
             />
           </>
         );
@@ -169,7 +169,7 @@ const RecoveryActions = observer(
               key="cancel"
               styling="filled"
               onClick={uiStore.closeLocationRecovery}
-              text="Cancel"
+              text="取消"
             />
           </>
         );
@@ -183,7 +183,7 @@ const RecoveryActions = observer(
               key="cancel"
               styling="filled"
               onClick={uiStore.closeLocationRecovery}
-              text="Cancel"
+              text="取消"
             />
           </>
         );
@@ -195,7 +195,7 @@ const RecoveryActions = observer(
             key="close"
             styling="filled"
             onClick={uiStore.closeLocationRecovery}
-            text="Close"
+            text="清除"
           />
         );
     }

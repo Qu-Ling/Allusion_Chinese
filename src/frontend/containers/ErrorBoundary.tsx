@@ -19,14 +19,14 @@ export const ClearDbButton = () => {
       <Button
         styling="outlined"
         icon={IconSet.CLEAR_DATABASE}
-        text="Clear Database"
+        text="清除数据库"
         onClick={() => setIsOpen(!isOpen)}
       />
       <Alert
         open={isOpen}
         icon={IconSet.CLEAR_DATABASE}
-        title="Are you sure you want to clear the database?"
-        primaryButtonText="Clear"
+        title="是否确实要清除数据库？"
+        primaryButtonText="确认清除"
         onClick={async (button) => {
           if (button === DialogButton.CloseButton) {
             setIsOpen(false);
@@ -36,11 +36,8 @@ export const ClearDbButton = () => {
           }
         }}
       >
-        <p>
-          This is intended as a last resort. All imported images and created tags will be
-          permanently removed.
-        </p>
-        <p>This will not delete your images on your system!</p>
+        <p>这是最后的手段. 所有导入的图片和创建的标签将被永久删除。</p>
+        <p>这不会删除您系统上的图像！</p>
       </Alert>
     </>
   );

@@ -23,7 +23,7 @@ const Settings = () => {
       onClose={uiStore.closeSettings}
       windowName="settings"
       closeOnEscape
-      additionalCloseKey={uiStore.hotkeyMap.toggleSettings}
+      additionalCloseKey={uiStore.hotkeyMap.打开设置}
     >
       <div id="settings" className={uiStore.theme}>
         <Tabs />
@@ -42,31 +42,31 @@ type TabItem = {
 const Tabs = () => {
   const SETTINGS_TABS = useLazy<TabItem[]>(() => [
     {
-      label: 'Appearance',
+      label: '主题与外观',
       content: Appearance,
     },
     {
-      label: 'Keyboard Shortcuts',
+      label: '键盘快捷键',
       content: Shortcuts,
     },
     {
-      label: 'Startup Behavior',
+      label: '启动行为',
       content: StartupBehavior,
     },
     {
-      label: 'Image Formats',
+      label: '图像格式',
       content: ImageFormatPicker,
     },
     {
-      label: 'Import/Export',
+      label: '导入/导出',
       content: ImportExport,
     },
     {
-      label: 'Background Processes',
+      label: '后台运行',
       content: BackgroundProcesses,
     },
     {
-      label: 'Advanced',
+      label: '高级选项',
       content: Advanced,
     },
   ]);

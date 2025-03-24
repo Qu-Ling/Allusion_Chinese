@@ -11,10 +11,7 @@ import { Button, IconSet, keyComboToString } from 'widgets';
 export const Shortcuts = observer(() => {
   return (
     <>
-      <p>
-        Click on a key combination to modify it. After typing your new combination, press Enter to
-        confirm or Escape to cancel.
-      </p>
+      <p>点击要修改的快捷键组合。输入新组合后,按回车确认或按Esc取消。</p>
       <HotkeyMapper />
     </>
   );

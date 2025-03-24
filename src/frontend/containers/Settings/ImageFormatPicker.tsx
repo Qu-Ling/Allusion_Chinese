@@ -47,7 +47,8 @@ export const ImageFormatPicker = observer(() => {
   return (
     <>
       <fieldset>
-        <legend>Image formats to be discovered by Allusion in your Locations</legend>
+        <legend>Allusion在您的位置中发现的图像格式：</legend>
+        <br />
         <div className="checkbox-set-container">
           {IMG_EXTENSIONS.map((ext) => (
             <Checkbox
@@ -63,15 +64,15 @@ export const ImageFormatPicker = observer(() => {
       </fieldset>
 
       <Toggle checked={removeDisabledImages} onChange={toggleRemoveDisabledImages}>
-        Remove images with disabled file extensions after save
+        保存后自动删除禁用文件扩展名的图片
       </Toggle>
 
       <Button
-        text="Reset"
+        text="重置"
         onClick={() => setNewEnabledFileExtensions(new Set(locationStore.enabledFileExtensions))}
       />
       <Button
-        text="Save"
+        text="保存"
         styling="filled"
         onClick={onSubmit}
         disabled={

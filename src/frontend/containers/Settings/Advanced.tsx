@@ -56,8 +56,8 @@ export const Advanced = observer(() => {
       {/* Todo: Add support to toggle this */}
       {/* <Switch checked={true} onChange={() => alert('Not supported yet')} label="Generate thumbnails" /> */}
       <Callout icon={IconSet.INFO}>
-        By default thumbnails are stored in the{' '}
-        <ExternalLink url={defaultThumbnailDir}>temporary files directory</ExternalLink>.
+        默认情况下，缩略图存储在：
+        <ExternalLink url={defaultThumbnailDir}>缓存文件目录</ExternalLink>.
       </Callout>
       <div className="filepicker">
         <FileInput
@@ -68,20 +68,20 @@ export const Advanced = observer(() => {
           }}
           onChange={browseThumbnailDirectory}
         >
-          Change...
+          更改
         </FileInput>
-        <h3 className="filepicker-label">Thumbnail Directory</h3>
+        <h3 className="filepicker-label">缩略图目录：</h3>
         <div className="filepicker-path">{thumbnailDirectory}</div>
       </div>
 
-      <h3>Development</h3>
+      <h3>其他操作</h3>
       <ButtonGroup>
         <ClearDbButton />
         <Button
           onClick={RendererMessenger.toggleDevTools}
           styling="outlined"
           icon={IconSet.CHROME_DEVTOOLS}
-          text="Toggle DevTools"
+          text="打开开发面板"
         />
       </ButtonGroup>
     </>

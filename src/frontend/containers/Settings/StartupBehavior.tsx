@@ -22,10 +22,10 @@ export const StartupBehavior = observer(() => {
         checked={uiStore.isRememberSearchEnabled}
         onChange={uiStore.toggleRememberSearchQuery}
       >
-        Restore and query last submitted search query
+        恢复和查询上次提交的搜索查询
       </Toggle>
       <Toggle checked={isAutoUpdateEnabled} onChange={toggleAutoUpdate}>
-        Check for updates
+        检查更新
       </Toggle>
     </div>
   );

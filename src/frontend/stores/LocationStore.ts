@@ -380,7 +380,7 @@ class LocationStore {
 
     AppToaster.show(
       {
-        message: 'Finding all images...',
+        message: '正在查找所有图像...',
         timeout: 0,
         clickAction: {
           label: 'Cancel',

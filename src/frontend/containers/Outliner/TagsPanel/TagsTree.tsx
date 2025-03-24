@@ -275,7 +275,7 @@ const TagItem = observer((props: ITagItemProps) => {
           }
         } else {
           // otherwise, search it
-          const query = new ClientTagSearchCriteria('tags', nodeData.id, 'containsRecursively');
+          const query = new ClientTagSearchCriteria('tags', nodeData.id, '包含递归');
           if (event.ctrlKey || event.metaKey) {
             uiStore.addSearchCriteria(query);
           } else {
@@ -575,14 +575,14 @@ const TagsTree = observer((props: Partial<MultiSplitPaneProps>) => {
           {uiStore.tagSelection.size > 0 ? (
             <ToolbarButton
               icon={IconSet.CLOSE}
-              text="Clear"
+              text="清空"
               onClick={uiStore.clearTagSelection}
-              tooltip="Clear Selection"
+              tooltip="清除选择"
             />
           ) : (
             <ToolbarButton
               icon={IconSet.PLUS}
-              text="New Tag"
+              text="新标签"
               onClick={handleRootAddTag}
               tooltip="填加一个新标签"
             />

@@ -61,24 +61,22 @@ export const ImportExport = observer(() => {
 
   return (
     <>
-      <h3>File Metadata</h3>
+      <h3>文件元数据</h3>
 
       <p>
-        This option is useful for importing/exporting tags from/to other software. If you use a
-        service like Dropbox or Google, you can write your tags to your files on one device and read
-        them on other devices.
+        此功能适用于在各类软件之间批量导入/导出标签。
+        如果您使用Dropbox、Google等服务，可在一台设备中将标签写入文件，在其他设备上读取这些标签。
       </p>
       <Callout icon={IconSet.INFO}>
-        The separator is used to format the tags metadata. For example a file with the assigned tags
-        Food, Fruit and Apple will be formatted with the currently selected separator as{' '}
+        用于规范标签元数据的格式。例如当文件包含已分配标签「食品、水果、苹果」时，系统会根据当前选定的分隔符自动生成格式化字符串：
         <pre style={{ display: 'inline' }}>
-          {['Food', 'Fruit', 'Apple'].join(exifTool.hierarchicalSeparator)}
+          {['食品', '水果', '苹果'].join(exifTool.hierarchicalSeparator)}
         </pre>
         .
       </Callout>
       <div className="vstack">
         <label>
-          Hierarchical separator
+          父子级分隔符
           <select
             value={exifTool.hierarchicalSeparator}
             onChange={(e) => exifTool.setHierarchicalSeparator(e.target.value)}
@@ -93,19 +91,19 @@ export const ImportExport = observer(() => {
 
         <ButtonGroup>
           <Button
-            text="Import tags from file metadata"
+            text="从文件元数据导入标签"
             onClick={fileStore.readTagsFromFiles}
             styling="outlined"
           />
           <Button
-            text="Export tags to file metadata"
+            text="将标签导出到文件元数据"
             onClick={() => setConfirmingMetadataExport(true)}
             styling="outlined"
           />
           <Alert
             open={isConfirmingMetadataExport}
-            title="Are you sure you want to overwrite your files' tags?"
-            primaryButtonText="Export"
+            title="您确定要用新标签覆盖这些文件的原有标签吗？"
+            primaryButtonText="导出"
             onClick={(button) => {
               if (button === DialogButton.PrimaryButton) {
                 fileStore.writeTagsToFiles();
@@ -114,18 +112,20 @@ export const ImportExport = observer(() => {
             }}
           >
             <p>
-              This will overwrite any existing tags (a.k.a. keywords) in those files with
-              Allusion&#39;s tags. It is recommended to import all tags before writing new tags.
+              <p>
+                此操作会将Allusion的标签<strong>覆盖</strong>
+                到这些文件中的现有标签。建议在添加新标签前，先导入所有已有标签。
+              </p>
             </p>
           </Alert>
         </ButtonGroup>
       </div>
 
-      <h3>Backup Database as File</h3>
+      <h3>将数据库备份为文件</h3>
 
       <Callout icon={IconSet.INFO}>
-        Automatic back-ups are created every 10 minutes in the{' '}
-        <ExternalLink url={backupDir}>backup directory</ExternalLink>.
+        系统每10分钟自动创建一次备份，存储路径为：
+        <ExternalLink url={backupDir}>备份目录</ExternalLink>.
       </Callout>
       <ButtonGroup>
         <FileInput
@@ -137,10 +137,10 @@ export const ImportExport = observer(() => {
           }}
           onChange={handleChooseImportDir}
         >
-          {IconSet.IMPORT} Restore database from file
+          {IconSet.IMPORT} 从文件还原数据库
         </FileInput>
         <Button
-          text="Backup database to file"
+          text="将数据库备份到文件"
           onClick={handleCreateExport}
           icon={IconSet.OPEN_EXTERNAL}
           styling="outlined"
@@ -148,7 +148,7 @@ export const ImportExport = observer(() => {
 
         <Alert
           open={Boolean(isConfirmingFileImport)}
-          title="Are you sure you want to restore the database from a backup?"
+          title="你确定要从备份文件中读取数据库？"
           primaryButtonText="Import"
           onClick={async (button) => {
             if (isConfirmingFileImport && button === DialogButton.PrimaryButton) {
@@ -171,8 +171,8 @@ export const ImportExport = observer(() => {
           }}
         >
           <p>
-            This will replace your current tag hierarchy and any tags assigned to images, so it is
-            recommended you create a backup first.
+            此操作将<strong>覆盖</strong>
+            当前标签层级及所有已分配给图片的标签，建议进行该操作前请先创建备份以避免数据丢失。
           </p>
           <p>{isConfirmingFileImport?.info}</p>
         </Alert>

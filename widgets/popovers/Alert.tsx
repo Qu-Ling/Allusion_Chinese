@@ -86,7 +86,7 @@ export interface AlertActionsProps {
 const AlertActions = (props: AlertActionsProps) => {
   const {
     onClick,
-    closeButtonText = 'Cancel',
+    closeButtonText = '取消',
     primaryButtonText,
     secondaryButtonText,
     defaultButton,

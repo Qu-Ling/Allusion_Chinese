@@ -93,10 +93,10 @@ export abstract class ClientFileSearchCriteria implements IBaseSearchCriteria {
         const op =
           arr.value.length <= 1
             ? arr.operator
-            : arr.operator === 'contains'
-            ? 'containsRecursively'
-            : arr.operator === 'notContains'
-            ? 'containsNotRecursively'
+            : arr.operator === '包含'
+            ? '包含递归'
+            : arr.operator === '不包含'
+            ? '不包含递归'
             : arr.operator;
         const value = arr.value[0];
         return new ClientTagSearchCriteria(arr.key, value, op);
@@ -115,7 +115,7 @@ export abstract class ClientFileSearchCriteria implements IBaseSearchCriteria {
 export class ClientTagSearchCriteria extends ClientFileSearchCriteria {
   @observable public value?: ID;
 
-  constructor(key: keyof FileDTO, id?: ID, operator: TagOperatorType = 'containsRecursively') {
+  constructor(key: keyof FileDTO, id?: ID, operator: TagOperatorType = '包含递归') {
     super(key, 'array', operator);
     this.value = id;
     makeObservable(this);
@@ -150,11 +150,11 @@ export class ClientTagSearchCriteria extends ClientFileSearchCriteria {
       const tag = rootStore.tagStore.get(val[0]);
       val = tag !== undefined ? Array.from(tag.getSubTree(), (t) => t.id) : [];
     }
-    if (op === 'containsNotRecursively') {
-      op = 'notContains';
+    if (op === '不包含递归') {
+      op = '不包含';
     }
-    if (op === 'containsRecursively') {
-      op = 'contains';
+    if (op === '包含递归') {
+      op = '包含';
     }
 
     return {
@@ -166,7 +166,17 @@ export class ClientTagSearchCriteria extends ClientFileSearchCriteria {
   };
 
   toCondition = (rootStore: RootStore): ArrayConditionDTO<FileDTO, any> => {
-    return this.serialize(rootStore) as ArrayConditionDTO<FileDTO, any>;
+    // 增加值转换
+    const criteria = this.serialize(rootStore);
+    return {
+      ...criteria,
+      operator:
+        criteria.operator === '包含'
+          ? 'contains'
+          : criteria.operator === '不包含'
+          ? 'notContains'
+          : criteria.operator,
+    } as ArrayConditionDTO<FileDTO, any>;
   };
 
   @action.bound setOperator(op: TagOperatorType): void {

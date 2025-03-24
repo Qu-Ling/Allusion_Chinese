@@ -79,9 +79,9 @@ const TagsPanel = (props: Partial<MultiSplitPaneProps>) => {
       return comboMatches(combo, parseKeyCombo(c));
     };
     const { hotkeyMap } = uiStore;
-    if (matches(hotkeyMap.selectAll)) {
+    if (matches(hotkeyMap.全选)) {
       uiStore.selectAllTags();
-    } else if (matches(hotkeyMap.deselectAll)) {
+    } else if (matches(hotkeyMap.取消全选)) {
       uiStore.clearTagSelection();
     }
   });

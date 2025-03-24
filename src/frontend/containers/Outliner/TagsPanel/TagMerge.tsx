@@ -74,7 +74,7 @@ export const TagMerge = observer(({ tag, onClose }: TagMergeProps) => {
 
         <fieldset className="dialog-actions">
           <Button
-            text="Merge"
+            text="合并"
             styling="filled"
             onClick={merge}
             disabled={selectedTag === undefined || mergingWithSelf}

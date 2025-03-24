@@ -17,68 +17,68 @@ export const Appearance = observer(() => {
 
   return (
     <>
-      <h3>Theme</h3>
+      <h3>主题</h3>
 
       <div className="vstack">
         <RadioGroup
           orientation="horizontal"
-          name="Color Scheme"
+          name="主题颜色"
           value={uiStore.theme}
           onChange={uiStore.setTheme}
         >
-          <Radio value="light">Light</Radio>
-          <Radio value="dark">Dark</Radio>
+          <Radio value="light">浅色模式</Radio>
+          <Radio value="dark">深色模式</Radio>
         </RadioGroup>
         <CustomThemePicker />
       </div>
 
-      <h3>Display</h3>
+      <h3>显示</h3>
 
       <div className="vstack">
         <Toggle checked={uiStore.isFullScreen} onChange={toggleFullScreen}>
-          Show full screen
+          全屏显示（隐藏顶部栏）
         </Toggle>
         <Zoom />
         <RadioGroup
           orientation="horizontal"
-          name="Scale images..."
+          name="选择图片样式"
           value={uiStore.upscaleMode}
           onChange={uiStore.setUpscaleMode}
         >
-          <Radio value="smooth">Smooth</Radio>
-          <Radio value="pixelated">Pixelated</Radio>
+          <Radio value="smooth">光滑</Radio>
+          <Radio value="pixelated">像素化</Radio>
         </RadioGroup>
       </div>
 
-      <h3>Thumbnail</h3>
+      <h3>缩略图</h3>
 
       <div className="vstack">
         <Toggle
           checked={uiStore.isThumbnailTagOverlayEnabled}
           onChange={uiStore.toggleThumbnailTagOverlay}
         >
-          Show assigned tags
+          显示已分配的标签
         </Toggle>
         <Toggle
           checked={uiStore.isThumbnailFilenameOverlayEnabled}
           onChange={uiStore.toggleThumbnailFilenameOverlay}
         >
-          Show filename
+          显示文件名
         </Toggle>
         <Toggle
           checked={uiStore.isThumbnailResolutionOverlayEnabled}
           onChange={uiStore.toggleThumbnailResolutionOverlay}
         >
-          Show resolution
+          显示图片分辨率
         </Toggle>
         <RadioGroup
           orientation="horizontal"
-          name="Shape"
+          name="图片展示"
           value={uiStore.thumbnailShape}
           onChange={uiStore.setThumbnailShape}
         >
-          <Radio value="square">Square</Radio>
-          <Radio value="letterbox">Letterbox</Radio>
+          <Radio value="square">填充展示框</Radio>
+          <Radio value="letterbox">维持长宽比</Radio>
         </RadioGroup>
       </div>
     </>
@@ -96,7 +96,7 @@ const Zoom = () => {
 
   return (
     <label>
-      Zoom
+      画廊缩放大小
       <select value={localZoomFactor} onChange={handleChange}>
         <option value={0.5}>50%</option>
         <option value={0.6}>60%</option>
@@ -130,7 +130,7 @@ const CustomThemePicker = () => {
   return (
     <div className="hstack">
       <label>
-        Custom Theme
+        自定义主题样式
         <select onChange={(e) => setTheme(e.target.value)} defaultValue={theme}>
           {<option value="">None</option>}
           {options.map((file) => (
@@ -142,15 +142,15 @@ const CustomThemePicker = () => {
       </label>
       <Button
         icon={IconSet.FOLDER_CLOSE}
-        text="Add..."
+        text="添加"
         onClick={() => shell.openExternal(themeDir)}
-        tooltip="Open the directory containing the theme files"
+        tooltip="打开包含主题文件的目录"
       />
       <Button
         icon={IconSet.RELOAD}
-        text="Refresh"
+        text="刷新"
         onClick={refresh}
-        tooltip="Reload the list of themes and current theme"
+        tooltip="重新加载主题列表和当前主题"
       />
     </div>
   );

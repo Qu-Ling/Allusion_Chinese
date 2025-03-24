@@ -37,21 +37,20 @@ export const BackgroundProcesses = observer(() => {
   return (
     <>
       <Toggle checked={isRunInBackground} onChange={toggleRunInBackground}>
-        Run in background
+        程序在后台运行
       </Toggle>
-      <h3>Browser Extension</h3>
+      <h3>浏览器扩展</h3>
       <Callout icon={IconSet.INFO}>
-        You need to install the browser extension before either in the{' '}
-        <ExternalLink url={chromeExtensionUrl}>Chrome Web Store</ExternalLink> or{' '}
-        <ExternalLink url={firefoxExtensionUrl}>Firefox Browser Add-Ons</ExternalLink>.
+        您需要先安装浏览器扩展，然后再在{' '}
+        <ExternalLink url={chromeExtensionUrl}>谷歌扩展</ExternalLink> 或{' '}
+        <ExternalLink url={firefoxExtensionUrl}>火狐扩展</ExternalLink>中启用.
       </Callout>
       <Callout icon={IconSet.INFO}>
-        To keep the browser extension working even when Allusion is closed, you must enable the Run
-        in background option.
+        要在 Allusion 关闭时保持浏览器扩展正常工作，您必须启用 程序在后台运行 选项。
       </Callout>
       <Callout icon={IconSet.INFO}>
-        For the browser extension to work, choose a download folder that is in one of your locations
-        already added to Allusion.
+        要使浏览器扩展正常工作，请选择位于您的<strong>「位置」</strong>的文件夹或其子文件夹 来添加到
+        Allusion 中。
       </Callout>
       <Toggle
         checked={isClipEnabled}
@@ -61,7 +60,7 @@ export const BackgroundProcesses = observer(() => {
             : () => alert('Please choose a download directory first.')
         }
       >
-        Run browser extension
+        运行浏览器扩展
       </Toggle>
       <div className="filepicker">
         <FileInput
@@ -72,9 +71,9 @@ export const BackgroundProcesses = observer(() => {
           }}
           onChange={browseImportDirectory}
         >
-          Change...
+          更改
         </FileInput>
-        <h4 className="filepicker-label">Download Directory</h4>
+        <h4 className="filepicker-label">下载目录</h4>
         <div className="filepicker-path">{uiStore.importDirectory || 'Not set'}</div>
       </div>
     </>

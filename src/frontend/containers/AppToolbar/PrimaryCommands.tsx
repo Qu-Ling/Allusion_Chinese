@@ -104,6 +104,7 @@ const FileSelectionCommand = observer(() => {
   );
 });
 
+// 删除文件弹出窗口
 const RemoveFilesPopover = observer(() => {
   const { uiStore } = useStore();
   return (

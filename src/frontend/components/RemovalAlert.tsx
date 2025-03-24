@@ -19,8 +19,8 @@ interface IRemovalProps<T> {
 export const LocationRemoval = (props: IRemovalProps<ClientLocation>) => (
   <RemovalAlert
     open
-    title={`Are you sure you want to delete the location "${props.object.name}"?`}
-    information="This will permanently remove the location and all data linked to its images in Allusion."
+    title={`是否确实要删除位置: "${props.object.name}"?`}
+    information="这将永久删除位置和链接在Allusion中其图像的所有数据"
     onCancel={props.onClose}
     onConfirm={() => {
       props.onClose();
@@ -33,7 +33,7 @@ export const SubLocationExclusion = (props: IRemovalProps<ClientSubLocation>) =>
   return (
     <Alert
       open
-      title={`Are you sure you want to exclude the directory "${props.object.name}"?`}
+      title={`确定要屏蔽 "${props.object.name}" 文件夹吗?`}
       icon={IconSet.WARNING}
       type="warning"
       primaryButtonText="Exclude"
@@ -45,7 +45,7 @@ export const SubLocationExclusion = (props: IRemovalProps<ClientSubLocation>) =>
         props.onClose();
       }}
     >
-      <p>Any tags saved on images in that directory will be lost.</p>
+      <p>保存在该文件夹中的图片以及标签都将不可见。</p>
     </Alert>
   );
 };
@@ -58,17 +58,17 @@ export const TagRemoval = observer((props: IRemovalProps<ClientTag>) => {
     (t) => <Tag key={t.id} text={t.name} color={t.viewColor} />,
   );
 
-  const text = `Are you sure you want to delete the tag "${object.name}"?`;
+  const text = `确定要删除标签: "${object.name}" 吗?`;
 
   return (
     <RemovalAlert
       open
       title={text}
-      information="Deleting tags or collections will permanently remove them from Allusion."
+      information="删除标签或集合将会永久地从Allusion中删除它们。"
       body={
         tagsToRemove.length > 0 && (
           <div id="tag-remove-overview">
-            <p>Selected Tags</p>
+            <p>选中的标签有：</p>
             {tagsToRemove}
           </div>
         )
@@ -100,10 +100,8 @@ export const FileRemoval = observer(() => {
   return (
     <RemovalAlert
       open={uiStore.isToolbarFileRemoverOpen}
-      title={`Are you sure you want to delete ${selection.size} missing file${
-        selection.size > 1 ? 's' : ''
-      }?`}
-      information="Deleting files will permanently remove them from Allusion, so any tags saved on them will be lost. If you move files back into their location, they will be automatically detected by Allusion."
+      title={`你确定要删除这${selection.size}个缺失文件吗?`}
+      information="删除文件将永久地从Allusion中删除它们，因此保存在它们上的任何标签都将丢失。 如果您将文件移回其位置，典故将自动检测到它们。"
       body={
         <div className="deletion-confirmation-list">
           {Array.from(selection).map((f) => (
@@ -117,6 +115,7 @@ export const FileRemoval = observer(() => {
   );
 });
 
+// 移动文件到回收站 0层
 export const MoveFilesToTrashBin = observer(() => {
   const { fileStore, uiStore } = useStore();
   const selection = uiStore.fileSelection;
@@ -148,17 +147,12 @@ export const MoveFilesToTrashBin = observer(() => {
     }
   });
 
-  const isMulti = selection.size > 1;
-
+  // 0层
   return (
     <RemovalAlert
       open={uiStore.isMoveFilesToTrashOpen}
-      title={`Are you sure you want to delete ${selection.size} file${isMulti ? 's' : ''}?`}
-      information={`You will be able to recover ${
-        isMulti ? 'them' : 'it'
-      } from your system's trash bin, but all assigned tags to ${
-        isMulti ? 'them' : 'it'
-      } in Allusion will be lost.`}
+      title={`你确定要删除这${selection.size}个文件吗?`}
+      information={'您将能从系统的回收站恢复这些文件，但给文件分配的所有标签在 Allusion 中将丢失。'}
       body={
         <div className="deletion-confirmation-list">
           {Array.from(selection).map((f) => (
@@ -177,8 +171,8 @@ export const SavedSearchRemoval = observer((props: IRemovalProps<ClientFileSearc
   return (
     <RemovalAlert
       open
-      title="Search item removal"
-      information={`Are you sure you want to delete the search item "${props.object.name}"?`}
+      title="搜索项删除"
+      information={`是否确实要删除搜索项： "${props.object.name}" 吗?`}
       onCancel={props.onClose}
       onConfirm={() => {
         props.onClose();
@@ -198,13 +192,14 @@ interface IRemovalAlertProps {
   body?: React.ReactNode;
 }
 
+// 移除警告
 const RemovalAlert = (props: IRemovalAlertProps) => (
   <Alert
     open={props.open}
     title={props.title}
     icon={IconSet.WARNING}
     type="danger"
-    primaryButtonText="Delete"
+    primaryButtonText="删除"
     defaultButton={DialogButton.PrimaryButton}
     onClick={(button) =>
       button === DialogButton.CloseButton ? props.onCancel() : props.onConfirm()

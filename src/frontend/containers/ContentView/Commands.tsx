@@ -162,10 +162,10 @@ export function useCommandHandler(
         <Menu>
           {fileMenu}
           <MenuDivider />
-          <MenuSubItem icon={IconSet.VIEW_GRID} text="View method...">
+          <MenuSubItem icon={IconSet.VIEW_GRID} text="视图布局">
             <LayoutMenuItems />
           </MenuSubItem>
-          <MenuSubItem icon={IconSet.FILTER_NAME_DOWN} text="Sort by...">
+          <MenuSubItem icon={IconSet.FILTER_NAME_DOWN} text="排序">
             <SortMenuItems />
           </MenuSubItem>
           <MenuDivider />

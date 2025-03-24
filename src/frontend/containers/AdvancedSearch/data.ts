@@ -42,11 +42,11 @@ export function defaultQuery(key: Key): Criteria {
   if (key === 'name' || key === 'absolutePath') {
     return { key, operator: 'contains', value: '' };
   } else if (key === 'tags') {
-    return { key, operator: 'contains', value: undefined };
+    return { key, operator: '包含', value: undefined };
   } else if (key === 'extension') {
     return {
       key,
-      operator: 'equals',
+      operator: '相同',
       value: IMG_EXTENSIONS[0],
     };
   } else if (key === 'dateAdded') {
@@ -91,8 +91,10 @@ export function fromCriteria(criteria: ClientFileSearchCriteria): [ID, Criteria]
 }
 
 export function intoCriteria(query: Criteria, tagStore: TagStore): ClientFileSearchCriteria {
+  // 名称,绝对路径,类型.
   if (query.key === 'name' || query.key === 'absolutePath' || query.key === 'extension') {
-    return new ClientStringSearchCriteria(query.key, query.value, query.operator);
+    // --类型断言强制转换 query.operator -> query.operator as 'equals'
+    return new ClientStringSearchCriteria(query.key, query.value, query.operator as 'equals');
   } else if (query.key === 'dateAdded') {
     return new ClientDateSearchCriteria(query.key, query.value, query.operator);
   } else if (query.key === 'size') {

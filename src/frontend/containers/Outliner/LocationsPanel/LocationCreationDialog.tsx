@@ -182,8 +182,8 @@ const LocationCreationDialog = ({ location, onClose }: LocationCreationDialogPro
         </fieldset>
 
         <fieldset className="dialog-actions">
-          <Button styling="filled" text="Confirm" onClick={handleSubmit} />
-          <Button styling="outlined" onClick={handleCancel} text="Cancel" />
+          <Button styling="filled" text="确认" onClick={handleSubmit} />
+          <Button styling="outlined" onClick={handleCancel} text="取消" />
         </fieldset>
       </form>
     </Dialog>

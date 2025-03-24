@@ -92,7 +92,7 @@ export const TagItemContextMenu = observer((props: IContextMenuProps) => {
       <MenuItem
         onClick={() =>
           tagStore
-            .create(tag, 'New Tag')
+            .create(tag, '新标签')
             .then((t) => dispatch(Factory.insertNode(tag.id, t.id)))
             .catch((err) => console.log('Could not create tag', err))
         }

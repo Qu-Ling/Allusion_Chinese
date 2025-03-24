@@ -24,11 +24,11 @@ export const MissingFileMenuItems = observer(() => {
     <>
       <MenuItem
         onClick={fileStore.fetchMissingFiles}
-        text="Open Recovery Panel"
+        text="打开恢复面板"
         icon={IconSet.WARNING_BROKEN_LINK}
         disabled={fileStore.showsMissingContent}
       />
-      <MenuItem onClick={uiStore.openToolbarFileRemover} text="Delete" icon={IconSet.DELETE} />
+      <MenuItem onClick={uiStore.openToolbarFileRemover} text="删除" icon={IconSet.DELETE} />
     </>
   );
 });
@@ -61,26 +61,18 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
 
   return (
     <>
-      <MenuItem onClick={handleViewFullSize} text="View at Full Size" icon={IconSet.SEARCH} />
-      <MenuItem
-        onClick={handlePreviewWindow}
-        text="Open In Preview Window"
-        icon={IconSet.PREVIEW}
-      />
-      <MenuItem
-        onClick={uiStore.openToolbarTagPopover}
-        text="Open Tag Selector"
-        icon={IconSet.TAG}
-      />
-      <MenuSubItem text="Search Similar Images..." icon={IconSet.MORE}>
+      <MenuItem onClick={handleViewFullSize} text="以全尺寸查看" icon={IconSet.SEARCH} />
+      <MenuItem onClick={handlePreviewWindow} text="在预览窗口中打开" icon={IconSet.PREVIEW} />
+      <MenuItem onClick={uiStore.openToolbarTagPopover} text="打开标签选择器" icon={IconSet.TAG} />
+      <MenuSubItem text="搜索相似图片..." icon={IconSet.MORE}>
         <MenuItem
           onClick={(e) =>
             handleSearchSimilar(
               e,
-              file.tags.toJSON().map((t) => new ClientTagSearchCriteria('tags', t.id, 'contains')),
+              file.tags.toJSON().map((t) => new ClientTagSearchCriteria('tags', t.id, '包含')),
             )
           }
-          text="Same Tags"
+          text="同标签"
           icon={IconSet.TAG}
         />
         <MenuItem
@@ -94,7 +86,7 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
               ),
             )
           }
-          text="Same Directory"
+          text="同目录"
           icon={IconSet.FOLDER_CLOSE}
         />
         <MenuItem
@@ -108,7 +100,7 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
               ),
             )
           }
-          text="Same Location"
+          text="同位置"
         />
         <MenuItem
           onClick={(e) =>
@@ -117,7 +109,7 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
               new ClientStringSearchCriteria('extension', file.extension, 'equals'),
             )
           }
-          text="Same File Type"
+          text="同文件类型"
           icon={IconSet.FILTER_FILE_TYPE}
         />
         <MenuItem
@@ -127,14 +119,14 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
               new ClientNumberSearchCriteria('height', file.height, 'equals'),
             ])
           }
-          text="Same Resolution"
+          text="同分辨率"
           icon={IconSet.ARROW_RIGHT}
         />
         <MenuItem
           onClick={(e) =>
             handleSearchSimilar(e, new ClientNumberSearchCriteria('size', file.size, 'equals'))
           }
-          text="Same File Size"
+          text="同样文件大小"
           icon={IconSet.FILTER_FILTER_DOWN}
         />
         <MenuItem
@@ -144,7 +136,7 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
               new ClientDateSearchCriteria('dateCreated', file.dateCreated, 'equals'),
             )
           }
-          text="Same Creation Date"
+          text="同创建日期"
           icon={IconSet.FILTER_DATE}
         />
         <MenuItem
@@ -154,7 +146,7 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
               new ClientDateSearchCriteria('dateModified', file.dateModified, 'equals'),
             )
           }
-          text="Same Modification Date"
+          text="同修改日期"
         />
       </MenuSubItem>
     </>
@@ -171,22 +163,18 @@ export const SlideFileViewerMenuItems = observer(({ file }: { file: ClientFile }
 
   return (
     <>
-      <MenuItem
-        onClick={handlePreviewWindow}
-        text="Open In Preview Window"
-        icon={IconSet.PREVIEW}
-      />
+      <MenuItem onClick={handlePreviewWindow} text="在预览窗口中打开" icon={IconSet.PREVIEW} />
 
-      <MenuSubItem text="Upscale filtering..." icon={IconSet.VIEW_GRID}>
+      <MenuSubItem text="分辨率选择" icon={IconSet.VIEW_GRID}>
         <MenuRadioItem
           onClick={uiStore.setUpscaleModeSmooth}
           checked={uiStore.upscaleMode === 'smooth'}
-          text="Smooth"
+          text="平滑"
         />
         <MenuRadioItem
           onClick={uiStore.setUpscaleModePixelated}
           checked={uiStore.upscaleMode === 'pixelated'}
-          text="Pixelated"
+          text="像素化"
         />
       </MenuSubItem>
     </>
@@ -199,7 +187,7 @@ export const ExternalAppMenuItems = observer(({ file }: { file: ClientFile }) =>
     <>
       <MenuItem
         onClick={() => uiStore.openExternal()}
-        text="Open External"
+        text="在外部打开"
         icon={IconSet.OPEN_EXTERNAL}
         disabled={file.isBroken}
       />
@@ -207,19 +195,15 @@ export const ExternalAppMenuItems = observer(({ file }: { file: ClientFile }) =>
         onClick={() =>
           LocationTreeItemRevealer.instance.revealSubLocation(file.locationId, file.absolutePath)
         }
-        text="Reveal in Locations Panel"
+        text="在位置中显示"
         icon={IconSet.TREE_LIST}
       />
       <MenuItem
         onClick={() => shell.showItemInFolder(file.absolutePath)}
-        text="Reveal in File Browser"
+        text="在文件管理器中显示"
         icon={IconSet.FOLDER_CLOSE}
       />
-      <MenuItem
-        onClick={uiStore.openMoveFilesToTrash}
-        text={`Delete file${uiStore.fileSelection.size > 1 ? 's' : ''}`}
-        icon={IconSet.DELETE}
-      />
+      <MenuItem onClick={uiStore.openMoveFilesToTrash} text={'删除文件'} icon={IconSet.DELETE} />
     </>
   );
 });
@@ -228,13 +212,15 @@ export const FileTagMenuItems = observer(({ file, tag }: { file: ClientFile; tag
   <>
     <MenuItem
       onClick={() => TagsTreeItemRevealer.instance.revealTag(tag)}
-      text="Reveal in Tags Panel"
+      text="在标签面板中显示"
+      //Reveal in Tags Panel
       icon={IconSet.TREE_LIST}
       disabled={file.isBroken}
     />
     <MenuItem
       onClick={() => file.removeTag(tag)}
-      text="Unassign Tag from File"
+      text="从文件取消分配标签"
+      // Unassign Tag from File
       icon={IconSet.TAG_BLANCO}
     />
   </>
