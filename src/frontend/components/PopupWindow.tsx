@@ -13,6 +13,7 @@ type PopupWindowProps = {
 
 /**
  * Creates a new external browser window, that renders whatever you pass as children
+ * 创建一个新的外部浏览器窗口，该窗口将您作为子项传递的任何内容呈现
  */
 const PopupWindow: React.FC<PopupWindowProps> = (props) => {
   const [containerEl] = useState(document.createElement('div'));
@@ -26,6 +27,8 @@ const PopupWindow: React.FC<PopupWindowProps> = (props) => {
     setWin(externalWindow);
 
     externalWindow.document.body.appendChild(containerEl);
+    // 固定尺寸设置（640x710px）
+    externalWindow.resizeTo(800, 650);
 
     // Copy style sheets from main window
     copyStyles(document, externalWindow.document);

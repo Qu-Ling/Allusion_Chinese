@@ -103,13 +103,11 @@ const KeyComboEditor = observer(
             onChange={() => void {}} // React quirk requires change handler
           />
           {text.length > 0 && isInvalidCombo(text, actionKey, hotkeyMap) && (
-            <div className="key-combo-input-warning">
-              {IconSet.WARNING_FILL} Key combination already in use!
-            </div>
+            <div className="key-combo-input-warning">{IconSet.WARNING_FILL} 组合键已在使用中！</div>
           )}
         </div>
         <Button
-          text={isChanging ? 'Save' : 'Edit'}
+          text={isChanging ? '保存' : '编辑'}
           onClick={() => {
             if (isEditable.current) {
               setEditableKey(actionKey);
@@ -123,7 +121,7 @@ const KeyComboEditor = observer(
         <Button
           icon={IconSet.RELOAD}
           onClick={() => uiStore.remapHotkey(actionKey, defaultCombo)}
-          text="Reset"
+          text="重置"
           disabled={comboMatches(parseKeyCombo(combo), parseKeyCombo(defaultCombo))}
         />
       </div>
