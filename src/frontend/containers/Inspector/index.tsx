@@ -29,14 +29,14 @@ const Inspector = observer(() => {
       </section>
       <section>
         <header>
-          <h2>Path to file</h2>
+          <h2>文件路径</h2>
         </header>
         <div className="input-file">
           <input readOnly className="input input-file-value" value={path} />
           <IconButton
             icon={IconSet.FOLDER_CLOSE}
             onClick={() => shell.showItemInFolder(path)}
-            text="Open in file explorer"
+            text="在资源管理器中打开"
           />
         </div>
       </section>
@@ -59,7 +59,7 @@ const Placeholder = () => {
   return (
     <section>
       <header>
-        <h2>No image selected</h2>
+        <h2>没有选择任何图片</h2>
       </header>
     </section>
   );

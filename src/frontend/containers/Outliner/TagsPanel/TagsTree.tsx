@@ -512,7 +512,7 @@ const TagsTree = observer((props: Partial<MultiSplitPaneProps>) => {
 
   const handleRootAddTag = useAction(() =>
     tagStore
-      .create(tagStore.root, 'New Tag')
+      .create(tagStore.root, '新标签')
       .then((tag) => dispatch(Factory.enableEditing(tag.id)))
       .catch((err) => console.log('Could not create tag', err)),
   );

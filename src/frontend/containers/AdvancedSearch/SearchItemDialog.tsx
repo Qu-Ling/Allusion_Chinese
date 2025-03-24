@@ -92,10 +92,10 @@ const SearchItemDialog = observer<ISearchItemDialogProps>(({ searchItem, onClose
         <QueryMatch toggle={toggle} searchMatchAny={searchMatchAny} />
 
         <fieldset className="dialog-actions">
-          <Button styling="outlined" text="Close" icon={IconSet.CLOSE} onClick={onClose} />
+          <Button styling="outlined" text="取消" icon={IconSet.CLOSE} onClick={onClose} />
           <Button
             styling="filled"
-            text="Save"
+            text="保存"
             icon={IconSet.SELECT_CHECKED}
             onClick={handleSubmit}
             disabled={query.size === 0}

@@ -116,14 +116,14 @@ const SearchItemContextMenu = observer(
   ({ searchItem, onDelete, onDuplicate, onReplace, onEdit }: IContextMenuProps) => {
     return (
       <Menu>
-        <MenuItem text="Edit" onClick={() => onEdit(searchItem)} icon={IconSet.EDIT} />
+        <MenuItem text="编辑" onClick={() => onEdit(searchItem)} icon={IconSet.EDIT} />
         <MenuItem
-          text="Replace with current search"
+          text="替换为当前搜索"
           onClick={() => onReplace(searchItem)}
           icon={IconSet.REPLACE}
         />
-        <MenuItem text="Duplicate" onClick={() => onDuplicate(searchItem)} icon={IconSet.PLUS} />
-        <MenuItem text="Delete" onClick={() => onDelete(searchItem)} icon={IconSet.DELETE} />
+        <MenuItem text="复制" onClick={() => onDuplicate(searchItem)} icon={IconSet.PLUS} />
+        <MenuItem text="删除e" onClick={() => onDelete(searchItem)} icon={IconSet.DELETE} />
       </Menu>
     );
   },
@@ -371,7 +371,7 @@ const SavedSearchesPanel = observer((props: Partial<MultiSplitPaneProps>) => {
       new ClientFileSearchItem(
         generateId(),
         uiStore.searchCriteriaList.map((c) => c.getLabel(CustomKeyDict, rootStore)).join(', ') ||
-          'New search',
+          '新搜索条件',
         uiStore.searchCriteriaList.map((c) => c.serialize(rootStore)),
         uiStore.searchMatchAny,
         searchStore.searchList.length,

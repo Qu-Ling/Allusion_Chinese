@@ -200,7 +200,7 @@ export const ExternalAppMenuItems = observer(({ file }: { file: ClientFile }) =>
       />
       <MenuItem
         onClick={() => shell.showItemInFolder(file.absolutePath)}
-        text="在文件管理器中显示"
+        text="在资源管理器中显示"
         icon={IconSet.FOLDER_CLOSE}
       />
       <MenuItem onClick={uiStore.openMoveFilesToTrash} text={'删除文件'} icon={IconSet.DELETE} />
