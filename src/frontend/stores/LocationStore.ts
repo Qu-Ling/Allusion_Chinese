@@ -121,7 +121,7 @@ class LocationStore {
 
       AppToaster.show(
         {
-          message: `Looking for new images... [${i + 1} / ${len}]`,
+          message: `正在寻找新图像...[${i + 1} / ${len}]`,
           timeout: 0,
         },
         progressToastKey,
@@ -133,7 +133,7 @@ class LocationStore {
       const readyTimeout = setTimeout(() => {
         AppToaster.show(
           {
-            message: 'This appears to be taking longer than usual.',
+            message: '这似乎比平时花费的时间更长.',
             timeout: 0,
             clickAction: {
               onClick: RendererMessenger.reload,
@@ -156,7 +156,7 @@ class LocationStore {
       if (diskFiles === undefined) {
         AppToaster.show(
           {
-            message: `Cannot find Location "${location.name}"`,
+            message: `找不到位置 "${location.name}"`,
             timeout: 0,
           },
           // a key such that the toast can be dismissed automatically on recovery

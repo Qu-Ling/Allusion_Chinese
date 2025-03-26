@@ -24,7 +24,9 @@ Allusion是一个为艺术家建立的工具，旨在帮助您组织您的**视�
 
 ### 发布版本
 
-可以使用“/dist”文件夹中的“yarn package”为您的平台构建可安装的可执行文件。构建是使用 [electron-builder](https://www.electron.build/) 包完成的，并由 'package.json' 文件中的一个部分配置。
+可以使用'yarn package'命令构建在“/dist”文件夹中的可安装的可执行文件。
+
+构建是使用 [electron-builder](https://www.electron.build/) 包完成的，并由 'package.json' 文件中的一个部分配置。
 在 GitHub 中创建标记时，内部版本会自动发布到 Github 版本。
 
 ## 更多信息

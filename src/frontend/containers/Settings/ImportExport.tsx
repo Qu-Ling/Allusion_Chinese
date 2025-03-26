@@ -45,15 +45,15 @@ export const ImportExport = observer(() => {
     try {
       await rootStore.backupDatabaseToFile(filepath);
       AppToaster.show({
-        message: 'Backup created successfully!',
-        clickAction: { label: 'View', onClick: () => shell.showItemInFolder(filepath) },
+        message: '成功创建备份！',
+        clickAction: { label: '查看', onClick: () => shell.showItemInFolder(filepath) },
         timeout: 5000,
       });
     } catch (e) {
       console.error(e);
       AppToaster.show({
-        message: 'Could not create backup, open DevTools for more details',
-        clickAction: { label: 'View', onClick: RendererMessenger.toggleDevTools },
+        message: '无法创建备份，请打开开发面板了解更多详细信息',
+        clickAction: { label: '查看', onClick: RendererMessenger.toggleDevTools },
         timeout: 5000,
       });
     }

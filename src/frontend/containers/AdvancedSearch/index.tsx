@@ -40,7 +40,7 @@ export const AdvancedSearchDialog = observer(() => {
   return (
     <Dialog
       open={uiStore.isAdvancedSearchOpen}
-      title="高级查询"
+      title="高级搜索"
       icon={IconSet.SEARCH_EXTENDED}
       onCancel={uiStore.closeAdvancedSearch}
     >

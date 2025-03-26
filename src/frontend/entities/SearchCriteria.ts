@@ -42,14 +42,14 @@ export const NumberOperatorSymbols: Record<NumberOperatorType, string> = {
 };
 
 export const StringOperatorLabels: Record<StringOperatorType, string> = {
-  equals: '相同',
-  equalsIgnoreCase: '相同（不区分大小写）',
-  notEqual: '不同',
+  equals: 'Equals',
+  equalsIgnoreCase: '相等(忽略大小写)',
+  notEqual: 'Not Equal',
   startsWith: '开头为',
-  startsWithIgnoreCase: '开头为（不区分大小写）',
+  startsWithIgnoreCase: '开头为(忽略大小写)',
   notStartsWith: '开头不为',
-  contains: '包含',
-  notContains: '不包含',
+  contains: 'Contains',
+  notContains: 'Not Contains',
 };
 
 export abstract class ClientFileSearchCriteria implements IBaseSearchCriteria {
@@ -93,10 +93,10 @@ export abstract class ClientFileSearchCriteria implements IBaseSearchCriteria {
         const op =
           arr.value.length <= 1
             ? arr.operator
-            : arr.operator === '包含'
-            ? '包含递归'
-            : arr.operator === '不包含'
-            ? '不包含递归'
+            : arr.operator === 'contains'
+            ? 'containsRecursively'
+            : arr.operator === 'notContains'
+            ? 'containsNotRecursively'
             : arr.operator;
         const value = arr.value[0];
         return new ClientTagSearchCriteria(arr.key, value, op);
@@ -115,7 +115,7 @@ export abstract class ClientFileSearchCriteria implements IBaseSearchCriteria {
 export class ClientTagSearchCriteria extends ClientFileSearchCriteria {
   @observable public value?: ID;
 
-  constructor(key: keyof FileDTO, id?: ID, operator: TagOperatorType = '包含递归') {
+  constructor(key: keyof FileDTO, id?: ID, operator: TagOperatorType = 'containsRecursively') {
     super(key, 'array', operator);
     this.value = id;
     makeObservable(this);
@@ -150,11 +150,11 @@ export class ClientTagSearchCriteria extends ClientFileSearchCriteria {
       const tag = rootStore.tagStore.get(val[0]);
       val = tag !== undefined ? Array.from(tag.getSubTree(), (t) => t.id) : [];
     }
-    if (op === '不包含递归') {
-      op = '不包含';
+    if (op === 'containsNotRecursively') {
+      op = 'notContains';
     }
-    if (op === '包含递归') {
-      op = '包含';
+    if (op === 'containsRecursively') {
+      op = 'contains';
     }
 
     return {
@@ -171,9 +171,9 @@ export class ClientTagSearchCriteria extends ClientFileSearchCriteria {
     return {
       ...criteria,
       operator:
-        criteria.operator === '包含'
+        criteria.operator === 'contains'
           ? 'contains'
-          : criteria.operator === '不包含'
+          : criteria.operator === 'notContains'
           ? 'notContains'
           : criteria.operator,
     } as ArrayConditionDTO<FileDTO, any>;

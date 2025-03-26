@@ -11,6 +11,19 @@ import { NumberOperatorSymbols, StringOperatorLabels } from '../../entities/Sear
 import { ClientTag } from '../../entities/Tag';
 import { Criteria, Key, Operator, TagValue, Value, defaultQuery } from './data';
 
+const textEnum = [
+  { en: 'equals', zh: '相等' },
+  { en: 'notEqual', zh: '不等' },
+  { en: 'contains', zh: '包含' },
+  { en: 'notContains', zh: '不包含' },
+  { en: 'containsRecursively', zh: '包含递归' },
+  { en: 'containsNotRecursively', zh: '不包含递归' },
+  // { en: 'Equals (case insensitive)', zh: '相同(忽略大小写)' },
+  // { en: 'Starts With', zh: '开头为' },
+  // { en: 'Starts With (case insensitive)', zh: '开头为(忽略大小写)' },
+  // { en: 'Not Starts With', zh: '开头不为' },
+];
+
 type SetCriteria = (fn: (criteria: Criteria) => Criteria) => void;
 
 interface IKeySelector {
@@ -26,7 +39,7 @@ export const KeySelector = forwardRef(function KeySelector(
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const key = e.target.value as Key;
     dispatch((criteria) => {
-      // Keep the text value and operator when switching between name and path
+      // 在名称和路径之间切换时保留文本值和运算符
       if ([criteria.key, key].every((k) => ['name', 'absolutePath'].includes(k))) {
         criteria.key = key;
         return { ...criteria };
@@ -204,12 +217,15 @@ const DateAddedInput = ({ value, labelledby, dispatch }: ValueInput<Date>) => {
   );
 };
 
+// 根据key获取操作逻辑
 function getOperatorOptions(key: Key) {
   if (['dateAdded', 'size', 'width', 'height'].includes(key)) {
     return NumberOperators.map((op) => toOperatorOption(op, NumberOperatorSymbols));
   } else if (key === 'extension') {
+    // 文件类型
     return BinaryOperators.map((op) => toOperatorOption(op));
   } else if (key === 'name' || key === 'absolutePath') {
+    // 文件路径or名字
     return StringOperators.map((op) => toOperatorOption(op, StringOperatorLabels));
   } else if (key === 'tags') {
     return TagOperators.map((op) => toOperatorOption(op));
@@ -217,9 +233,11 @@ function getOperatorOptions(key: Key) {
   return [];
 }
 
+// 逻辑标签显示
 const toOperatorOption = <T extends string>(o: T, labels?: Record<T, string>) => (
   <option key={o} value={o}>
-    {labels && o in labels ? labels[o] : camelCaseToSpaced(o)}
+    {textEnum.find((language) => language.en === o)?.zh ||
+      (labels && o in labels ? labels[o] : camelCaseToSpaced(o))}
   </option>
 );
 

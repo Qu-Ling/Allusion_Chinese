@@ -275,7 +275,7 @@ const TagItem = observer((props: ITagItemProps) => {
           }
         } else {
           // otherwise, search it
-          const query = new ClientTagSearchCriteria('tags', nodeData.id, '包含递归');
+          const query = new ClientTagSearchCriteria('tags', nodeData.id, 'containsRecursively');
           if (event.ctrlKey || event.metaKey) {
             uiStore.addSearchCriteria(query);
           } else {

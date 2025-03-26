@@ -26,6 +26,7 @@ import CHROME_DEVTOOLS from 'resources/icons/chrome-devtools.svg';
 import CLEAR_DATABASE from 'resources/icons/clear-database.svg';
 import CLOSE from 'resources/icons/close.svg';
 import COLOR from 'resources/icons/color.svg';
+import COPY from 'resources/icons/copy.svg';
 import CHROME_CLOSE from 'resources/icons/chrome-close.svg';
 import CHROME_MAXIMIZE from 'resources/icons/chrome-maximize.svg';
 import CHROME_MINIMIZE from 'resources/icons/chrome-minimize.svg';
@@ -136,6 +137,7 @@ const IconSet = {
   CHROME_RESTORE: toSvg(CHROME_RESTORE),
   DB_ERROR: toSvg(DB_ERROR),
   DELETE: toSvg(DELETE),
+  COPY: toSvg(COPY),
   // DESELECT_ALL_FILL: toSvg(DESELECT_ALL_FILL),
   // DESELECT_ALL_ROUND: toSvg(DESELECT_ALL_ROUND),
   DOUBLE_CARET: toSvg(DOUBLE_CARET),

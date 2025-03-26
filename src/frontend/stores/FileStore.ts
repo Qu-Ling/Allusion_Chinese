@@ -148,7 +148,7 @@ class FileStore {
           lastToastVal = newToastVal;
           AppToaster.show(
             {
-              message: `Writing tags to files ${newToastVal}%...`,
+              message: `将标签写入文件中，进度： ${newToastVal}%...`,
               timeout: 0,
             },
             toastKey,
@@ -164,7 +164,7 @@ class FileStore {
       }
       AppToaster.show(
         {
-          message: 'Writing tags to files... Done!',
+          message: '将标签写入文件... 完成了！',
           timeout: 5000,
         },
         toastKey,
@@ -173,7 +173,7 @@ class FileStore {
       console.error('Could not write tags', e);
       AppToaster.show(
         {
-          message: 'Writing tags to files failed. Check the dev console for more details',
+          message: '将标签写入文件失败。查看开发控制台了解更多详情',
           timeout: 5000,
         },
         toastKey,

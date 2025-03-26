@@ -2,10 +2,15 @@ import { ID } from './id';
 import { FileDTO } from './file';
 import { NumberOperatorType, StringOperatorType } from './data-storage-search';
 
-export const BinaryOperators = ['相同', '不同'] as const;
+export const BinaryOperators = ['equals', 'notEqual'] as const;
 export type BinaryOperatorType = (typeof BinaryOperators)[number];
 
-export const TagOperators = ['包含', '不包含', '包含递归', '不包含递归'] as const;
+export const TagOperators = [
+  'contains',
+  'notContains',
+  'containsRecursively',
+  'containsNotRecursively',
+] as const;
 export type TagOperatorType = (typeof TagOperators)[number];
 
 export type OperatorType =

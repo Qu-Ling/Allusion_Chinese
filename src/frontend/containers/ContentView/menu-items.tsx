@@ -1,4 +1,4 @@
-import { shell } from 'electron';
+import { shell, clipboard, nativeImage } from 'electron';
 import { observer } from 'mobx-react-lite';
 import SysPath from 'path';
 import React from 'react';
@@ -61,6 +61,12 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
 
   return (
     <>
+      <MenuItem
+        onClick={() => clipboard.writeImage(nativeImage.createFromPath(file.absolutePath))}
+        text="复制图片"
+        disabled={file.isBroken}
+        icon={IconSet.COPY}
+      />
       <MenuItem onClick={handleViewFullSize} text="以全尺寸查看" icon={IconSet.SEARCH} />
       <MenuItem onClick={handlePreviewWindow} text="在预览窗口中打开" icon={IconSet.PREVIEW} />
       <MenuItem onClick={uiStore.openToolbarTagPopover} text="打开标签选择器" icon={IconSet.TAG} />
@@ -69,7 +75,7 @@ export const FileViewerMenuItems = ({ file }: { file: ClientFile }) => {
           onClick={(e) =>
             handleSearchSimilar(
               e,
-              file.tags.toJSON().map((t) => new ClientTagSearchCriteria('tags', t.id, '包含')),
+              file.tags.toJSON().map((t) => new ClientTagSearchCriteria('tags', t.id, 'contains')),
             )
           }
           text="同标签"

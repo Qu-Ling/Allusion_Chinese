@@ -14,7 +14,7 @@ export const Toast = ({ message, clickAction, onDismiss }: IToast) => {
     <div className="toast">
       <span>{message}</span>
       {clickAction}
-      <Button text="Dismiss" onClick={onDismiss} />
+      <Button text="我知道了" onClick={onDismiss} />
     </div>
   );
 };
